@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useAuth } from '@/contexts/AuthContext';
@@ -22,42 +21,48 @@ const Dashboard = () => {
       title: 'AI Portfolio Builder',
       description: 'Create stunning portfolios from your PDF resume',
       action: 'Create Portfolio',
-      gradient: 'from-blue-500 to-cyan-500'
+      gradient: 'from-blue-500 to-cyan-500',
+      route: '/portfolio-builder'
     },
     {
       icon: User,
       title: 'AI CV Generator',
       description: 'Generate ATS-friendly resumes with AI assistance',
       action: 'Generate CV',
-      gradient: 'from-purple-500 to-pink-500'
+      gradient: 'from-purple-500 to-pink-500',
+      route: '/cv-generator'
     },
     {
       icon: MessageSquare,
       title: 'AI Cover Letter Writer',
       description: 'Write personalized cover letters instantly',
       action: 'Write Letter',
-      gradient: 'from-green-500 to-teal-500'
+      gradient: 'from-green-500 to-teal-500',
+      route: '/cover-letter'
     },
     {
       icon: Target,
       title: 'Resume Optimizer',
       description: 'Optimize your resume for specific job descriptions',
       action: 'Optimize Resume',
-      gradient: 'from-orange-500 to-red-500'
+      gradient: 'from-orange-500 to-red-500',
+      route: '/resume-optimizer'
     },
     {
       icon: Users,
       title: 'AI Mock Interviewer',
       description: 'Practice interviews with AI-powered feedback',
       action: 'Start Interview',
-      gradient: 'from-indigo-500 to-blue-500'
+      gradient: 'from-indigo-500 to-blue-500',
+      route: '/mock-interview'
     },
     {
       icon: BookOpen,
       title: 'Career Coaching',
       description: 'Get personalized career guidance and skill analysis',
       action: 'Start Coaching',
-      gradient: 'from-pink-500 to-purple-500'
+      gradient: 'from-pink-500 to-purple-500',
+      route: '/career-coaching'
     }
   ];
 
@@ -125,10 +130,7 @@ const Dashboard = () => {
                 <CardContent>
                   <Button 
                     className={`w-full bg-gradient-to-r ${feature.gradient} hover:opacity-90 transition-opacity`}
-                    onClick={() => {
-                      // TODO: Navigate to respective feature pages
-                      console.log(`Navigating to ${feature.title}`);
-                    }}
+                    onClick={() => navigate(feature.route)}
                   >
                     {feature.action}
                   </Button>
