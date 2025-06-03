@@ -3,7 +3,11 @@ import { motion } from "framer-motion";
 import { ArrowUp, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const CTASection = () => {
+interface CTASectionProps {
+  onGetStarted: () => void;
+}
+
+const CTASection = ({ onGetStarted }: CTASectionProps) => {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Animated Background */}
@@ -79,6 +83,7 @@ const CTASection = () => {
             <Button 
               size="lg" 
               className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
+              onClick={onGetStarted}
             >
               Start Building Free
               <ArrowUp className="w-5 h-5 ml-2 rotate-45" />

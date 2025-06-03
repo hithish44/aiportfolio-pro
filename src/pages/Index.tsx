@@ -4,6 +4,9 @@ import { ArrowDown, Star, FileText, MessageSquare, Mail, Youtube } from "lucide-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { useEffect } from "react";
 import HeroSection from "@/components/HeroSection";
 import FeaturesSection from "@/components/FeaturesSection";
 import TimelineSection from "@/components/TimelineSection";
@@ -11,6 +14,23 @@ import PricingSection from "@/components/PricingSection";
 import CTASection from "@/components/CTASection";
 
 const Index = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+
+  useEffect(() => {
+    if (user) {
+      navigate('/dashboard');
+    }
+  }, [user, navigate]);
+
+  const handleGetStarted = () => {
+    navigate('/auth');
+  };
+
+  const handleSignIn = () => {
+    navigate('/auth');
+  };
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -32,8 +52,11 @@ const Index = () => {
               <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">Features</a>
               <a href="#experience" className="text-muted-foreground hover:text-primary transition-colors">Experience</a>
               <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</a>
-              <Button variant="outline">Sign In</Button>
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+              <Button variant="outline" onClick={handleSignIn}>Sign In</Button>
+              <Button 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                onClick={handleGetStarted}
+              >
                 Get Started
               </Button>
             </div>
@@ -42,7 +65,7 @@ const Index = () => {
       </motion.nav>
 
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection onGetStarted={handleGetStarted} />
 
       {/* Features Section */}
       <FeaturesSection />
@@ -54,7 +77,7 @@ const Index = () => {
       <PricingSection />
 
       {/* CTA Section */}
-      <CTASection />
+      <CTASection onGetStarted={handleGetStarted} />
 
       {/* Footer */}
       <footer className="bg-muted/30 py-12">
