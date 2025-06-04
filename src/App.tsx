@@ -10,6 +10,11 @@ import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import PortfolioBuilder from "./pages/PortfolioBuilder";
+import CVGenerator from "./pages/CVGenerator";
+import CoverLetter from "./pages/CoverLetter";
+import ResumeOptimizer from "./pages/ResumeOptimizer";
+import MockInterview from "./pages/MockInterview";
+import CareerCoaching from "./pages/CareerCoaching";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +37,31 @@ const App = () => (
             <Route path="/portfolio-builder" element={
               <ProtectedRoute>
                 <PortfolioBuilder />
+              </ProtectedRoute>
+            } />
+            <Route path="/cv-generator" element={
+              <ProtectedRoute>
+                <CVGenerator />
+              </ProtectedRoute>
+            } />
+            <Route path="/cover-letter" element={
+              <ProtectedRoute>
+                <CoverLetter />
+              </ProtectedRoute>
+            } />
+            <Route path="/resume-optimizer" element={
+              <ProtectedRoute>
+                <ResumeOptimizer />
+              </ProtectedRoute>
+            } />
+            <Route path="/mock-interview" element={
+              <ProtectedRoute>
+                <MockInterview />
+              </ProtectedRoute>
+            } />
+            <Route path="/career-coaching" element={
+              <ProtectedRoute>
+                <CareerCoaching />
               </ProtectedRoute>
             } />
             <Route path="*" element={<NotFound />} />
